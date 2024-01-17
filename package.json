@@ -21,6 +21,7 @@
     "@headlessui/vue": "^1.7.7",
     "@heroicons/vue": "^2.0.13",
     "@nuxtjs/tailwindcss": "6.8.0",
+    "base58-js": "^2.0.0",
     "buffer": "^6.0.3",
     "clvm_tools": "^0.9.5",
     "greenwebjs": "^1.1.9",

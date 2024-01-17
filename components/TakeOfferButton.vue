@@ -66,11 +66,18 @@ const copyOffer = () => {
     <button
       type="button"
       @click="copyOffer"
-      class="relative -ml-px inline-flex items-center rounded-r-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
+      class="relative -ml-px inline-flex items-center border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
     >
       <span class="sr-only">Copy Offer</span>
       <CheckCircleIcon v-if="copied" class="h-4 w-4" aria-hidden="true" />
       <ClipboardDocumentIcon v-else class="h-4 w-4" aria-hidden="true" />
     </button>
+    <NuxtLink
+      :to="`https://dexie.space/offers/${offer.id}`"
+      target='_blank'
+      class="relative -ml-px inline-flex items-center rounded-r-md border border-gray-300 bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-700 hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+    >
+      <img class='h-4 w-4' alt='dexie logo' src='https://dexie.space/favicon.ico'>
+    </NuxtLink>
   </span>
 </template>

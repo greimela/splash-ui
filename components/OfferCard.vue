@@ -34,7 +34,7 @@ const { offer } = defineProps({
       </div>
     </div>
     <div class="p-4 flex justify-center" v-if="offer.status === 'active'">
-      <TakeOfferButton :offer="{ offer: offer.offer }" />
+      <TakeOfferButton :offer="offer" />
     </div>
   </div>
 </template>

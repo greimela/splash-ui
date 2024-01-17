@@ -2,6 +2,7 @@ import { Offer } from '~/chia/offer';
 import { cats } from '~/cats';
 import { BigNumber, util } from 'greenwebjs';
 import { Buffer } from 'buffer';
+import { binary_to_base58 } from 'base58-js';
 
 window.Buffer = Buffer;
 
@@ -9,6 +10,10 @@ export async function parseOffer(offer_bech32: string) {
   const offer: Offer = Offer.from_bech32(offer_bech32);
   let status = 'active';
   let containsNft = false;
+
+  const hashBuffer = await window.crypto.subtle.digest('SHA-256', Buffer.from(offer_bech32));
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const id = binary_to_base58(hashArray);
 
   const offeredCoins: any[] = [];
   for (const [assetId, offeredCoinsForAsset] of Object.entries(offer.getOfferedCoins())) {
@@ -77,5 +82,5 @@ export async function parseOffer(offer_bech32: string) {
     requestedPayments.push({ assetId, cat, nft, amount });
   }
 
-  return { offer: offer_bech32, offeredCoins, requestedPayments, status, containsNft };
+  return { id, offer: offer_bech32, offeredCoins, requestedPayments, status, containsNft };
 }
